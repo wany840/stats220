@@ -1,11 +1,25 @@
-# stats220
+# Welcome to My Stats220 Repo!
+## Exploring Data Visualization with R
 
-This is my repo for STATS 220. 
+This repository is dedicated to my work in **Stats220**, where I explore data visualization techniques using R. 
 
-A little about me:
+### What You'll Find Here
+- **Projects**: A collection of my data visualization projects.
+- **Code**: R scripts and RMarkdown files.
+- **Resources**: Helpful links and tutorials.
 
-- I am undertaking a degree in ....
-- I am taking STATS 220 because ....
-- I am interested in learning about ....
+### My Favorite Tools
+1. RStudio
+2. ggplot2
+3. magick
+   - For image manipulation
+   - For creating memes!
 
-A meme that captures how I currently feel about my university studies is ![](https://c.tenor.com/8druEACXtX8AAAAd/tenor.gif)
+### Useful Links
+- [RStudio Website](https://www.rstudio.com/)
+- [ggplot2 Documentation](https://ggplot2.tidyverse.org/)
+- [magick Package Guide](https://cran.r-project.org/web/packages/magick/vignettes/intro.html)
+
+### Fun with GIFs
+Here's a fun animated GIF to brighten your day:
+![Funny Cat GIF](https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif)

@@ -80,7 +80,7 @@ ggplot(latest_data, aes(x = Platform, y = DeliveryTime)) +
 ```
 
 
-Customer Rating Analysis
+## Customer Rating Analysis
 Next, we analyze the average ratings across different platforms.
 
 ```{r}

@@ -49,5 +49,5 @@ logged_data <- rename(
 
 latest_data <- logged_data
 
-
+latest_data
 ```

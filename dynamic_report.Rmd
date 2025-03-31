@@ -34,5 +34,5 @@ library(ggplot2)
 # Load the data
 logged_data <- read.csv("C:\Users\wany840\Downloads\Project 2")
 
-
+logged_data[,2]
 

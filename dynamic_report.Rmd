@@ -34,6 +34,18 @@ library(ggplot2)
 # Load the data
 logged_data <- read_csv("https://raw.githubusercontent.com/wany840/stats220/main/foodsurvey.csv")
 
-logged_data[,2]
 
 
+logged_data <- rename(logged_data, Platform = `Which.food.delivery.platform.was.used.for.this.order.`)
+logged_data <- rename(logged_data, RestaurantType = `What.type.of.restaurant.was.this.order.from.`)
+logged_data <- rename(logged_data, TotalAmount = `What.was.the.total.amount.of.the.order...Currency..NZD.`)
+logged_data <- rename(logged_data, OrderTime = `Order.Time..Multiple.Choice.`)
+logged_data <- rename(logged_data, DeliveryTime = `How.many.minutes.did.it.take.from.ordering.to.delivery.`)
+logged_data <- rename(logged_data, DeliveryAttitude = `How.was.the.delivery.person.s.attitude.`)
+logged_data <- rename(logged_data, Rating = `X...How.would.you.rate.this.food.delivery.experience...1...Very.poor..10...Excellent...`)
+
+
+latest_data <- logged_data
+
+
+```

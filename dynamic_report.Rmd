@@ -32,8 +32,6 @@ library(ggplot2)
 
 
 # Load the data
-logged_data <-library(readr)
-
 logged_data <- read_csv("https://raw.githubusercontent.com/wany840/stats220/main/foodsurvey.csv")
 
 # Rename columns for easier understanding

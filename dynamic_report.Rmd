@@ -32,6 +32,8 @@ library(ggplot2)
 
 
 # Load the data
-logged_data <- read.csv("C:\\Users\\wany840\\Downloads\\Project 2\\foodsurvey.csv")
+logged_data <- read.csv("C:\\Users\\wany840\\OneDrive - The University of Auckland\\Desktop\\foodsurvey.csv")
+logged_data
+
 
 

@@ -34,6 +34,6 @@ library(ggplot2)
 # Load the data
 logged_data <- read_csv("https://raw.githubusercontent.com/wany840/stats220/main/foodsurvey.csv")
 
-logged_data[1,2]
+logged_data[,2]
 
 

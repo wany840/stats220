@@ -1,0 +1,21 @@
+Timestamp, Which food delivery platform was used for this order?  ,  What type of restaurant was this order from?  ,  What was the total amount of the order? (Currency: NZD)  ,  Order Time (Multiple Choice)  ,  How many minutes did it take from ordering to delivery?  ,   How was the delivery person's attitude?  ,"   How would you rate this food delivery experience? (1 = Very poor, 10 = Excellent)  "
+13/03/2025,panda,"Fast food (e.g., McDonald's, KFC)",19,Lunch (10:00 - 14:00),38,"Neutral, no interaction",10
+11/03/2025,doordash,Western restaurant,27,Dinner (17:00 - 21:00),25,friendly and polite,9
+6/03/2025,uber,Chinese restaurant,27,Lunch (10:00 - 14:00),50,"Neutral, no interaction",7
+14/03/2025,panda,Café/Bubble tea shop,12,Breakfast (06:00 - 10:00),25,friendly and polite,10
+1/03/2025,doordash,Western restaurant,35,Dinner (17:00 - 21:00),35,friendly and polite,10
+2/03/2025,panda,Chinese restaurant,25,Breakfast (06:00 - 10:00),20,"Neutral, no interaction",9
+3/03/2025,doordash,"Fast food (e.g., McDonald's, KFC)",26,Lunch (10:00 - 14:00),25,"Neutral, no interaction",9
+4/03/2025,panda,Chinese restaurant,20,Dinner (17:00 - 21:00),42,"Neutral, no interaction",8
+5/03/2025,panda,Chinese restaurant,18,Dinner (17:00 - 21:00),45,"Neutral, no interaction",7
+6/03/2025,panda,"Fast food (e.g., McDonald's, KFC)",22,Dinner (17:00 - 21:00),25,friendly and polite,9
+7/03/2025,uber,Western restaurant,35,Lunch (10:00 - 14:00),35,friendly and polite,9
+7/03/2025,doordash,Café/Bubble tea shop,15,Breakfast (06:00 - 10:00),25,"Neutral, no interaction",9
+8/03/2025,doordash,Western restaurant,70,Dinner (17:00 - 21:00),20,friendly and polite,10
+12/03/2025,uber,Chinese restaurant,25,Breakfast (06:00 - 10:00),20,friendly and polite,10
+28/02/2025,uber,"Fast food (e.g., McDonald's, KFC)",23,Lunch (10:00 - 14:00),35,"Neutral, no interaction",9
+1/03/2025,uber,"Fast food (e.g., McDonald's, KFC)",22,Breakfast (06:00 - 10:00),24,"Neutral, no interaction",8
+2/03/2025,doordash,Café/Bubble tea shop,20,Breakfast (06:00 - 10:00),18,"Neutral, no interaction",8
+14/02/2025,panda,Chinese restaurant,18,Lunch (10:00 - 14:00),45,friendly and polite,7
+28/02/2025,doordash,Café/Bubble tea shop,15,Breakfast (06:00 - 10:00),20,friendly and polite,10
+27/02/2025,panda,Chinese restaurant,42,Dinner (17:00 - 21:00),25,"Neutral, no interaction",7

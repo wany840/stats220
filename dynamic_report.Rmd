@@ -37,7 +37,7 @@ logged_data <- read_csv("https://raw.githubusercontent.com/wany840/stats220/main
 
 
 logged_data <- rename(
-    Platform = `Which.food.delivery.platform.was.used.for.this.order.`,
+    Platform = `Which food delivery platform was used for this order?`,
     RestaurantType = `What.type.of.restaurant.was.this.order.from.`,
     TotalAmount = `What.was.the.total.amount.of.the.order...Currency..NZD.`,
     OrderTime = `Order.Time..Multiple.Choice.`,

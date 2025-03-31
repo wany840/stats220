@@ -32,36 +32,7 @@ library(ggplot2)
 
 
 # Load the data
-logged_data <- read.csv("C:/Users/wany840/OneDrive - The University of Auckland/Documents/Project 2/foodsurvey.csv")
-
-# Rename columns for easier understanding
-latest_data <- logged_data %>%
-  rename(
-    Platform = `Which.food.delivery.platform.was.used.for.this.order.`,
-    RestaurantType = `What.type.of.restaurant.was.this.order.from.`,
-    TotalAmount = `What.was.the.total.amount.of.the.order...Currency..NZD.`,
-    OrderTime = `Order.Time..Multiple.Choice.`,
-    DeliveryTime = `How.many.minutes.did.it.take.from.ordering.to.delivery.`,
-    DeliveryAttitude = `How.was.the.delivery.person.s.attitude.`,
-    Rating = `X...How.would.you.rate.this.food.delivery.experience...1...Very.poor..10...Excellent...`
-  )
-
-# ---- Descriptive Statistics ----
-
-# 1. Calculate the mean, median, and standard deviation of TotalAmount and DeliveryTime
-mean_total_amount <- mean(latest_data$TotalAmount, na.rm = TRUE)
-median_total_amount <- median(latest_data$TotalAmount, na.rm = TRUE)
-sd_total_amount <- sd(latest_data$TotalAmount, na.rm = TRUE)
-
-mean_delivery_time <- mean(latest_data$DeliveryTime, na.rm = TRUE)
-median_delivery_time <- median(latest_data$DeliveryTime, na.rm = TRUE)
-sd_delivery_time <- sd(latest_data$DeliveryTime, na.rm = TRUE)
+logged_data <- read.csv("C:\Users\wany840\Downloads\Project 2")
 
 
-# Average delivery time by platform
-ggplot(latest_data, aes(x = Platform, y = DeliveryTime)) +
-  stat_summary(fun = mean, geom = "bar", fill = "#FF5733") +
-  labs(title = "Average Delivery Time by Platform", x = "Platform", y = "Average Delivery Time (Minutes)") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-```

@@ -114,8 +114,7 @@ cat(report_text)
 ## extra( Dynamic Commentary Based on Data) just for creativity
 
 ```{r}
-library(dplyr)
-library(ggplot2)
+
 library(dplyr)
 library(ggplot2)
 
@@ -175,4 +174,43 @@ ggplot(summary_data, aes(x = Time_Type, y = avg_rating, fill = Platform)) +
        x = "Meal Time + Cuisine Type (L/D+W/A/L)", 
        y = "Rating (1-10)") +
   small_font_theme
+# Find the platform with the highest average rating for each Time_Type
+highest_rating <- latest_data %>%
+  group_by(Time_Type) %>%
+  mutate(
+    highest_rating = max(Rating, na.rm = TRUE)
+  ) %>%
+  filter(Rating == highest_rating) %>%
+  select(Time_Type, Platform, Rating) %>%
+  distinct()
+
+# Find the platform with the fastest delivery time for each Time_Type
+fastest_delivery <- latest_data %>%
+  group_by(Time_Type) %>%
+  mutate(
+    fastest_delivery_time = min(DeliveryTime, na.rm = TRUE)
+  ) %>%
+  filter(DeliveryTime == fastest_delivery_time) %>%
+  select(Time_Type, Platform, DeliveryTime) %>%
+  distinct()
+
+# Generate report
+report <- paste(
+  "Report on Best Performing Platform for Each Time + Cuisine Type\n",
+  "-------------------------------------------------------------\n",
+  paste(sapply(1:nrow(highest_rating), function(i) {
+    paste0("For ", highest_rating$Time_Type[i], ", the platform with the highest rating is ", 
+           highest_rating$Platform[i], " with an average rating of ", highest_rating$Rating[i], ".")
+  }), collapse = "\n"),
+  "\n",
+  paste(sapply(1:nrow(fastest_delivery), function(i) {
+    paste0("For ", fastest_delivery$Time_Type[i], ", the platform with the fastest delivery time is ", 
+           fastest_delivery$Platform[i], " with an average delivery time of ", fastest_delivery$DeliveryTime[i], " minutes.")
+  }), collapse = "\n"),
+  sep = "\n"
+)
+
+# Print the report
+cat(report)
+
 ```

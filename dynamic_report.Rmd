@@ -31,7 +31,7 @@ csv_file <- "https://docs.google.com/spreadsheets/d/1RE0pUxFUy1zrV9Y24F2c2uGjPe4
 
 logged_data <- read.csv(csv_file)
 
-colnames(logged_data)
+
 
 # Rename columns for easier understanding
 latest_data <- logged_data %>%

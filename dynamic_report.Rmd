@@ -6,8 +6,7 @@ output: html_fragment
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
-install.packages("dplyr")
-install.packages("ggplot2")
+
 ```
 
 ```{css}

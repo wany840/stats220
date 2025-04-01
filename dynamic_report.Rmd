@@ -1,0 +1,180 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+install.packages("dplyr")
+install.packages("ggplot2")
+```
+
+```{css}
+
+```
+
+
+##Overview of the Data
+In this report, we are analyzing a dataset of food delivery orders. The dataset contains information on different platforms used for ordering, the types of restaurants, total order amounts, and customer ratings.
+
+We aim to explore key factors like delivery times, ratings, and the correlation between platform choices and customer satisfaction.
+
+##Delivery Time Analysis
+We begin by analyzing the average delivery time across different food delivery platforms.
+
+```{r}
+
+
+library(dplyr)
+library(ggplot2)
+
+csv_file <- "https://docs.google.com/spreadsheets/d/1RE0pUxFUy1zrV9Y24F2c2uGjPe4vTLKzYF0eNm_4qaA/export?format=csv"
+
+logged_data <- read.csv(csv_file)
+
+colnames(logged_data)
+
+# Rename columns for easier understanding
+latest_data <- logged_data %>%
+  rename(
+    Platform = `Which.food.delivery.platform.was.used.for.this.order.`,
+    RestaurantType = `What.type.of.restaurant.was.this.order.from.`,
+    TotalAmount = `What.was.the.total.amount.of.the.order...Currency..NZD.`,
+    OrderTime = `Order.Time..Multiple.Choice.`,
+    DeliveryTime = `How.many.minutes.did.it.take.from.ordering.to.delivery.`,
+    DeliveryAttitude = `How.was.the.delivery.person.s.attitude.`,
+    Rating = `How.would.you.rate.this.food.delivery.experience...1...Very.poor..10...Excellent.`
+  )
+
+
+# ---- Descriptive Statistics ----
+
+# Calculate the mean, median, and standard deviation of TotalAmount and DeliveryTime
+mean_total_amount <- mean(latest_data$TotalAmount, na.rm = TRUE)
+median_total_amount <- median(latest_data$TotalAmount, na.rm = TRUE)
+sd_total_amount <- sd(latest_data$TotalAmount, na.rm = TRUE)
+
+mean_delivery_time <- mean(latest_data$DeliveryTime, na.rm = TRUE)
+median_delivery_time <- median(latest_data$DeliveryTime, na.rm = TRUE)
+sd_delivery_time <- sd(latest_data$DeliveryTime, na.rm = TRUE)
+
+# Calculate platform statistics directly from latest_data
+fastest_platform <- latest_data %>%
+  group_by(Platform) %>%
+  summarise(avg_delivery = mean(DeliveryTime, na.rm = TRUE)) %>%
+  filter(avg_delivery == min(avg_delivery, na.rm = TRUE))
+
+top_rated_platform <- latest_data %>%
+  group_by(Platform) %>%
+  summarise(avg_rating = mean(Rating, na.rm = TRUE)) %>%
+  filter(avg_rating == max(avg_rating, na.rm = TRUE))
+
+
+# Average delivery time by platform
+ggplot(latest_data, aes(x = Platform, y = DeliveryTime)) +
+  stat_summary(fun = mean, geom = "bar", fill = "#FF5733") +
+  labs(title = "Average Delivery Time by Platform", x = "Platform", y = "Average Delivery Time (Minutes)") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+
+Customer Rating Analysis
+Next, we analyze the average ratings across different platforms.
+
+```{r}
+
+# Average rating by platform
+ggplot(latest_data, aes(x = Platform, y = Rating)) +
+  stat_summary(fun = mean, geom = "bar", fill = "#4CAF50") +
+  labs(title = "Average Rating by Platform", x = "Platform", y = "Average Rating") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+# Generate dynamic report
+report_text <- paste(
+  "FOOD DELIVERY PERFORMANCE REPORT",
+  "\n\nFastest Delivery Platform:",
+  "\nPlatform:", fastest_platform$Platform,
+  "\nAverage Delivery Time:", round(fastest_platform$avg_delivery, 1), "minutes",
+  
+  "\n\nTop-Rated Platform:", 
+  "\nPlatform:", top_rated_platform$Platform,
+  "\nAverage Rating:", round(top_rated_platform$avg_rating, 1), "stars",
+  
+  "\n\nReport generated on:", Sys.Date(),
+  sep = ""
+)
+
+# Print the report
+cat(report_text)
+
+```
+
+
+## extra( Dynamic Commentary Based on Data) just for creativity
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(dplyr)
+library(ggplot2)
+
+latest_data <- logged_data %>%
+  rename(
+    Platform = `Which.food.delivery.platform.was.used.for.this.order.`,
+    RestaurantType = `What.type.of.restaurant.was.this.order.from.`,
+    TotalAmount = `What.was.the.total.amount.of.the.order...Currency..NZD.`,
+    OrderTime = `Order.Time..Multiple.Choice.`,
+    DeliveryTime = `How.many.minutes.did.it.take.from.ordering.to.delivery.`,
+    DeliveryAttitude = `How.was.the.delivery.person.s.attitude.`,
+    Rating = `How.would.you.rate.this.food.delivery.experience...1...Very.poor..10...Excellent.`
+  ) %>%  # <- 
+
+  mutate(
+    # Simplify the name, e.g., L+D = Lunch + Doordash
+    Time_Type = paste0(
+      substr(OrderTime, 1, 1),  # Take the first letter (L/D)
+      "+",
+      substr(RestaurantType, 1, 1) # Take the first letter of restaurant type
+    )
+  )
+
+
+
+
+# count average
+summary_data <- latest_data %>%
+  group_by(Time_Type, Platform) %>%
+  summarise(
+    avg_delivery_time = mean(DeliveryTime, na.rm = TRUE),
+    avg_rating = mean(Rating, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+
+small_font_theme <- theme(
+  axis.text = element_text(size = 8),
+  axis.title = element_text(size = 9),
+  plot.title = element_text(size = 10),
+  legend.text = element_text(size = 8),
+  legend.title = element_text(size = 9)
+)
+
+# delivery time plot
+ggplot(summary_data, aes(x = Time_Type, y = avg_delivery_time, fill = Platform)) +
+  geom_col(position = position_dodge(0.8), width = 0.7) +
+  labs(title = "Avg Delivery Time by Platform", 
+       x = "Meal Time + Cuisine Type (L/D+W/A/L)", 
+       y = "Delivery Time (min)") +
+  small_font_theme
+
+# rating table
+ggplot(summary_data, aes(x = Time_Type, y = avg_rating, fill = Platform)) +
+  geom_col(position = position_dodge(0.8), width = 0.7) +
+  labs(title = "Avg Rating by Platform", 
+       x = "Meal Time + Cuisine Type (L/D+W/A/L)", 
+       y = "Rating (1-10)") +
+  small_font_theme
+```

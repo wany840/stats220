@@ -25,8 +25,7 @@ We begin by analyzing the average delivery time across different food delivery p
 ```{r}
 
 
-library(dplyr)
-library(ggplot2)
+
 
 csv_file <- "https://docs.google.com/spreadsheets/d/1RE0pUxFUy1zrV9Y24F2c2uGjPe4vTLKzYF0eNm_4qaA/export?format=csv"
 

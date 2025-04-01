@@ -92,28 +92,27 @@ Now, let's generate some dynamic commentary based on the data.
 fastest_platform <- latest_data %>%
   group_by(Platform) %>%
   summarise(mean_delivery_time = mean(DeliveryTime, na.rm = TRUE), .groups = "drop") %>%
-  arrange(mean_delivery_time) %>%
-  slice(1)
+  filter(mean_delivery_time == min(mean_delivery_time, na.rm = TRUE))
 
 fastest_platform_text <- paste(
-  "The platform with the fastest delivery time is:", fastest_platform$Platform, 
-  "with an average delivery time of", round(fastest_platform$mean_delivery_time, 1), "minutes."
+  "The platform with the fastest delivery time is:", paste(fastest_platform$Platform, collapse = ", "), 
+  "with an average delivery time of", round(fastest_platform$mean_delivery_time[1], 1), "minutes."
 )
 
 # Text commentary for the highest rated platform
 highest_rated_platform <- latest_data %>%
   group_by(Platform) %>%
   summarise(mean_rating = mean(Rating, na.rm = TRUE), .groups = "drop") %>%
-  arrange(desc(mean_rating)) %>%
-  slice(1)
+  filter(mean_rating == max(mean_rating, na.rm = TRUE))
 
 highest_rated_platform_text <- paste(
-  "The platform with the highest average rating is:", highest_rated_platform$Platform, 
-  "with an average rating of", round(highest_rated_platform$mean_rating, 1), "."
+  "The platform with the highest average rating is:", paste(highest_rated_platform$Platform, collapse = ", "), 
+  "with an average rating of", round(highest_rated_platform$mean_rating[1], 1), "."
 )
 
 fastest_platform_text
 highest_rated_platform_text
+
 
 ```
 
